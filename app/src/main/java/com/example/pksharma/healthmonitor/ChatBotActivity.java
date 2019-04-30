@@ -3,6 +3,7 @@ package com.example.pksharma.healthmonitor;
 //import android.support.v7.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
@@ -222,6 +223,22 @@ public class ChatBotActivity extends AppCompatActivity{
             }
             messages.add(commonNameDisease + " " + nameDisease + " " + probabilityDisease);
             botMessages.add(commonNameDisease + " " + nameDisease + " " + probabilityDisease);
+
+
+            if(nameDisease.trim().equals("Common cold"))
+                commonNameDisease="cold";
+            if(nameDisease.trim().equals("Chest pain"))
+                commonNameDisease="heart";
+            if(nameDisease.trim().equals("Asthma attack"))
+                commonNameDisease="asthma";
+            if(nameDisease.trim().equals("Depressive disorder"))
+                commonNameDisease="depression";
+
+
+            Intent intent=new Intent(ChatBotActivity.this,MainActivity.class);
+            intent.putExtra("Dis",commonNameDisease);
+            startActivity(intent);
+
         }
 
 

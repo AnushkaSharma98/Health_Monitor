@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout linearLayout;
     String Disease="";
     Disease d=new Disease();
+    TextView textView;
     int val=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayout=findViewById(R.id.main_linear);
         botBtn=findViewById(R.id.botBtn);
         enterBtn=findViewById(R.id.enterBtn);
-
+        textView=findViewById(R.id.tvDis);
 
         botBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +72,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Intent i=getIntent();
+        Disease=i.getStringExtra("Dis");
+
+        if(Disease!=null) {
+            if (Disease.trim().equals("Heart") || Disease.trim().equals("heart")) {
+                val = 1;
+                //    Toast.makeText(this, "value", Toast.LENGTH_SHORT).show();
+            } else if (Disease.trim().equals("Depression") || Disease.trim().equals("depression"))
+                val = 2;
+            else if (Disease.trim().equals("Diabetes") || Disease.trim().equals("diabetes"))
+                val = 3;
+            else if (Disease.trim().equals("Asthama") || Disease.trim().equals("asthama"))
+                val = 4;
+            else if (Disease.trim().equals("Cold") || Disease.trim().equals("cold"))
+                val=5;
+            else if(Disease.trim().equals("Cancer") || Disease.trim().equals("cancer"))
+                val=6;
+            else
+                val = 0;
+        }
+        Toast.makeText(MainActivity.this, "value: "+Disease, Toast.LENGTH_SHORT).show();
+
+
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,14 +105,22 @@ public class MainActivity extends AppCompatActivity {
                 {
                     val=1;
                     //    Toast.makeText(this, "value", Toast.LENGTH_SHORT).show();
-                }else if(Disease.trim().equals("Depression"))
+                }else if(Disease.trim().equals("Depression") || Disease.trim().equals("depression"))
                     val=2;
-                else if(Disease.trim().equals("Diabities"))
+                else if(Disease.trim().equals("Diabities") || Disease.trim().equals("diabetes"))
                     val=3;
-                else if(Disease.trim().equals("Asthama"))
+                else if(Disease.trim().equals("Asthama") || Disease.trim().equals("asthama"))
                     val=4;
+                else if (Disease.trim().equals("Cold") || Disease.trim().equals("cold"))
+                    val=5;
+                else if(Disease.trim().equals("Cancer") || Disease.trim().equals("cancer"))
+                    val=6;
                 else
                     val=0;
+
+
+                if(Disease!=null)
+                    textView.setText("Detected Disease: "+Disease);
 
                 Toast.makeText(MainActivity.this, "value: "+val, Toast.LENGTH_SHORT).show();
                // Toast.makeText(MainActivity.this, "Disease:"+Disease, Toast.LENGTH_SHORT).show();
@@ -106,6 +139,8 @@ public class MainActivity extends AppCompatActivity {
              }
         });
 
+        if(Disease!=null)
+            textView.setText(Disease);
 
 
 

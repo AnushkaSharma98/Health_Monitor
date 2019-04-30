@@ -128,13 +128,39 @@ public class showProgress extends AppCompatActivity {
 
 
 
-        }else{
+        } else if(val==4){
        //     Toast.makeText(this, "well"+Disease, Toast.LENGTH_SHORT).show();
             textView1.setText("Cough(Severe-3,Mild-2,Moderate-1)");
             textView2.setText("Breathing Issue(Severe-3,Mild-2,Moderate-1)");
             textView3.setText("Cough");
             textView4.setText("Breathing Issue");
-        }
+        }else if(val==5){
+           textView1.setText("Cold (Severe-3,Mild-2,Moderate-1)");
+           textView2.setText("Cough (Severe-3,Mild-2,Moderate-1)");
+
+           textView3.setText("Cold");
+           textView4.setText("Cough");
+       }else if(val==6){
+
+
+           textView1.setText("Cancer 1");
+           textView2.setText("Cancer 2");
+
+           textView3.setText("Cancer 1");
+           textView4.setText("Cancer 2");
+
+
+
+       }else{
+
+           textView1.setText("Fever  ");
+           textView2.setText("Blood Pressure ");
+
+           textView3.setText("Fever");
+           textView4.setText("Blood Pressure");
+
+
+       }
 
 
 
@@ -182,7 +208,7 @@ public class showProgress extends AppCompatActivity {
                     if(y2<60)
                         Toast.makeText(showProgress.this, "ALERT! Low Heart Rate", Toast.LENGTH_SHORT).show();
 
-                }else if(val==2)
+                }else if(val==2 || val==4 || val==5 ||val==6)
                 {
                     g11=1;
                     g12=1;
@@ -225,6 +251,13 @@ public class showProgress extends AppCompatActivity {
                     g23=1;
                     g24=2;
 
+                    if(y2>140)
+                        Toast.makeText(showProgress.this, "ALERT! High Blood Pressure", Toast.LENGTH_SHORT).show();
+                    if(y2<90)
+                        Toast.makeText(showProgress.this, "ALERT! Low Blood Pressure", Toast.LENGTH_SHORT).show();
+
+                    if(y1>105)
+                        Toast.makeText(showProgress.this, "ALERT! High Body Temperature", Toast.LENGTH_SHORT).show();
                 }
 
 
