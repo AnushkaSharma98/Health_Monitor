@@ -22,7 +22,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".showProgress"></activity>
-        <activity android:name=".ChatBotActivity"></activity>
+        <activity android:name=".ChatBotActivity"/>
+
+
 
 
     </application>

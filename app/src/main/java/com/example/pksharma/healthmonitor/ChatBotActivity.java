@@ -95,6 +95,7 @@ public class ChatBotActivity extends AppCompatActivity{
         chatList.setDivider(null);
 
         sendButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
