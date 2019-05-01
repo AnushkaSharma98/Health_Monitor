@@ -12,7 +12,7 @@ public class MessagesViewHolder extends RecyclerView.ViewHolder {
     public MessagesViewHolder(@NonNull View itemView) {
         super(itemView);
 
-        textView = itemView.findViewById(R.id.textView);
+      //  textView = itemView.findViewById(R.id.textView);
     }
 
 }
