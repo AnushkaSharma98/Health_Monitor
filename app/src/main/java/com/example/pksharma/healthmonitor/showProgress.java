@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.nfc.Tag;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -77,23 +80,29 @@ public class showProgress extends AppCompatActivity {
 
 
        // Disease=dum;
-        textView.setText("Disease="+Disease);
+      //  textView.setText("Disease="+Disease);
 
         extra=0;
 
        if(val == 1){
-            Toast.makeText(this, "oh beteeee", Toast.LENGTH_LONG).show();
-            textView1.setText("Blood Pressure");
-            textView2.setText("Heart Rate");
-            textView3.setText("Blood Pressure");
-            textView4.setText("Heart Rate");
+         //   Toast.makeText(this, "oh beteeee", Toast.LENGTH_LONG).show();
+            textView2.setText("Blood Pressure");
+            textView1.setText("Heart Rate");
+            et2.setHint("Upper , Lower");
+            et2.setInputType(InputType.TYPE_CLASS_TEXT);
+            textView4.setText("Upper Blood Pressure");
+            textView3.setText("Heart Rate");
+            extra++;
         }
         else if(val==2) {
-            textView1.setText("Mood (Good-3,Avg-2,Bad-1)" );
+            textView1.setText("Mood " );
+           et1.setHint("Good-3,Avg-2,Bad-1");
+            textView2.setText("Anxiety ");
+           et2.setHint("Severe-3,Mild-2,Moderate-1");
 
-            textView2.setText("Anxiety(Good-3,Avg-2,Bad-1) ");
-            textView6.setVisibility(View.VISIBLE);
-            textView6.setText("Sleep Cycle (Good-3,Avg-2,Bad-1) ");
+           textView6.setVisibility(View.VISIBLE);
+            textView6.setText("Sleep Cycle  ");
+           et3.setHint("Good-3,Avg-2,Bad-1");
             et3.setVisibility(View.VISIBLE);
 
             extra++;
@@ -121,22 +130,31 @@ public class showProgress extends AppCompatActivity {
 
         }else if(val==3){
             textView1.setText("Insulin");
-            textView2.setText(" Blood Pressure");
 
-            textView3.setText("Insulin");
-            textView4.setText(" Blood Pressure");
+            textView2.setText(" Blood Pressure");
+           et2.setInputType(InputType.TYPE_CLASS_TEXT);
+           et2.setHint("Upper , Lower");
+
+
+           textView3.setText("Insulin");
+            textView4.setText(" Upper Blood Pressure");
+            extra++;
 
 
 
         } else if(val==4){
        //     Toast.makeText(this, "well"+Disease, Toast.LENGTH_SHORT).show();
-            textView1.setText("Cough(Severe-3,Mild-2,Moderate-1)");
-            textView2.setText("Breathing Issue(Severe-3,Mild-2,Moderate-1)");
+            textView1.setText("Cough");
+            et1.setHint("Severe-3,Mild-2,Moderate-1");
+            textView2.setText("Breathing Issue");
+            et2.setHint("Severe-3,Mild-2,Moderate-1");
             textView3.setText("Cough");
             textView4.setText("Breathing Issue");
         }else if(val==5){
-           textView1.setText("Cold (Severe-3,Mild-2,Moderate-1)");
-           textView2.setText("Cough (Severe-3,Mild-2,Moderate-1)");
+           textView1.setText("Cold ");
+           et1.setHint("Severe-3,Mild-2,Moderate-1");
+           textView2.setText("Cough");
+           et2.setHint("Severe-3,Mild-2,Moderate-1");
 
            textView3.setText("Cold");
            textView4.setText("Cough");
@@ -153,12 +171,14 @@ public class showProgress extends AppCompatActivity {
 
        }else{
 
-           textView1.setText("Fever  ");
+           textView1.setText("Heart Rate  ");
            textView2.setText("Blood Pressure ");
+           et2.setInputType(InputType.TYPE_CLASS_TEXT);
+           et2.setHint("Upper , Lower");
 
-           textView3.setText("Fever");
-           textView4.setText("Blood Pressure");
-
+           textView3.setText("Heart Rate");
+           textView4.setText("Upper Blood Pressure");
+           extra++;
 
        }
 
@@ -173,13 +193,19 @@ public class showProgress extends AppCompatActivity {
 
                 String val1=et1.getText().toString();
                 String val2=et2.getText().toString();
+                String arr[]=val2.split(",");
+
+
                 try{
                     y1= Integer.parseInt(val1);
                 }catch(NumberFormatException ex){ // handle your exception
                     Toast.makeText(showProgress.this, "val1 error", Toast.LENGTH_SHORT).show();
                 }
                 try{
-                    y2=Integer.parseInt(val2);
+                    if(val!=2 && val!=4 && val!=5 && val!=6) {
+                        y2 = Integer.parseInt(arr[0]);
+                        y3=  Integer.parseInt(arr[1]);
+                    }
                 }catch(NumberFormatException ex){ // handle your exception
                     Toast.makeText(showProgress.this, "val2 error", Toast.LENGTH_SHORT).show();
 
@@ -188,24 +214,24 @@ public class showProgress extends AppCompatActivity {
                 int g21=0,g22=0,g23=0,g24=0;
                 if(val==1)
                 {
-                    g11=120;
-                    g12=122;
-                    g13=130;
-                    g14=139;
-                    g21=60;
-                    g22=70;
-                    g23=100;
-                    g24=80;
+                    g21=120;
+                    g22=122;
+                    g23=130;
+                    g24=139;
+                    g11=60;
+                    g12=70;
+                    g13=100;
+                    g14=80;
 
-                    if(y1>140)
+                    if(y2>140)
                         Toast.makeText(showProgress.this, "ALERT! High Blood Pressure", Toast.LENGTH_SHORT).show();
-                    if(y1<90)
+                    if(y2<90)
                         Toast.makeText(showProgress.this, "ALERT! Low Blood Pressure", Toast.LENGTH_SHORT).show();
 
 
-                    if(y2>120)
+                    if(y1>120)
                         Toast.makeText(showProgress.this, "ALERT! High Heart Rate", Toast.LENGTH_SHORT).show();
-                    if(y2<60)
+                    if(y1<60)
                         Toast.makeText(showProgress.this, "ALERT! Low Heart Rate", Toast.LENGTH_SHORT).show();
 
                 }else if(val==2 || val==4 || val==5 ||val==6)
@@ -242,22 +268,25 @@ public class showProgress extends AppCompatActivity {
 
 
                 }else{
-                    g11=1;
-                    g12=1;
-                    g13=2;
-                    g14=3;
-                    g21=2;
-                    g22=2;
-                    g23=1;
-                    g24=2;
+                    g21=120;
+                    g22=122;
+                    g23=130;
+                    g24=139;
+                    g11=60;
+                    g12=70;
+                    g13=100;
+                    g14=80;
 
                     if(y2>140)
                         Toast.makeText(showProgress.this, "ALERT! High Blood Pressure", Toast.LENGTH_SHORT).show();
                     if(y2<90)
                         Toast.makeText(showProgress.this, "ALERT! Low Blood Pressure", Toast.LENGTH_SHORT).show();
 
-                    if(y1>105)
-                        Toast.makeText(showProgress.this, "ALERT! High Body Temperature", Toast.LENGTH_SHORT).show();
+
+                    if(y1>120)
+                        Toast.makeText(showProgress.this, "ALERT! High Heart Rate", Toast.LENGTH_SHORT).show();
+                    if(y1<60)
+                        Toast.makeText(showProgress.this, "ALERT! Low Heart Rate", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -292,21 +321,32 @@ public class showProgress extends AppCompatActivity {
                 graphView2.addSeries(serie);
 
         if(extra>0) {
-            String val3=et3.getText().toString();
             textView5.setVisibility(View.VISIBLE);
             int g31=0,g32=0,g33=0,g34=0;
-            g31=2;
-            g32=3;
-            g33=1;
-            g34=1;
 
-            try{
-                y3=Integer.parseInt(val3);
-            }catch(NumberFormatException ex){ // handle your exception
-                Toast.makeText(showProgress.this, "val3 error", Toast.LENGTH_SHORT).show();
+            if(val!=2 && val!=4 && val!=5 && val!=6)
+            {
+                g31=70;
+                g32=60;
+                g33=80;
+                g34=90;
+                textView5.setText("Lower Blood Pressure");
+            }else {
+                String val3=et3.getText().toString();
 
+                g31 = 2;
+                g32 = 3;
+                g33 = 1;
+                g34 = 1;
+
+
+                try {
+                    y3 = Integer.parseInt(val3);
+                } catch (NumberFormatException ex) { // handle your exception
+                    Toast.makeText(showProgress.this, "val3 error", Toast.LENGTH_SHORT).show();
+
+                }
             }
-
             graphView3.setVisibility(View.VISIBLE);
             LineGraphSeries<DataPoint> seri = new LineGraphSeries<DataPoint>(new DataPoint[]{
                     new DataPoint(0, g31),

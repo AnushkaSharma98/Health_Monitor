@@ -14,15 +14,18 @@
     android:id="@+id/linear"
     tools:context=".showProgress">
 
-    <TextView
-        android:id="@+id/text"
-        android:textSize="30dp"
-        android:text="Disease"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!--<TextView-->
+        <!--android:id="@+id/text"-->
+        <!--android:textSize="30dp"-->
+        <!--android:text="Disease"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content" />-->
     <Button
         android:text="ADD"
+        android:background="#3589b4"
+        android:textColor="@android:color/white"
         android:id="@+id/btn1"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -33,6 +36,7 @@
 
     <EditText
         android:id="@+id/et1"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -44,18 +48,21 @@
 
     <EditText
         android:id="@+id/et2"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
         android:visibility="invisible"
         android:id="@+id/text6"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
         android:visibility="invisible"
         android:id="@+id/et3"
+        android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -71,6 +78,8 @@
         android:id="@+id/graph1" />
     <TextView
         android:id="@+id/text3"
+        android:textSize="20sp"
+        android:textAlignment="center"
         android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -86,6 +95,8 @@
         android:id="@+id/text4"
         android:visibility="invisible"
         android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -101,6 +112,8 @@
         android:id="@+id/text5"
         android:visibility="invisible"
         android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

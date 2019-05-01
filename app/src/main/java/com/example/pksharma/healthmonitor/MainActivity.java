@@ -13,10 +13,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.telephony.SmsManager;
+import android.widget.ViewFlipper;
 
 
 public class MainActivity extends AppCompatActivity implements AccelerometerListener {
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
     TextView textView;
     int val=0;
     boolean flag=false;
+    ViewFlipper viewFlipper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,13 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
         botBtn=findViewById(R.id.botBtn);
         enterBtn=findViewById(R.id.enterBtn);
         textView=findViewById(R.id.tvDis);
+        viewFlipper=findViewById(R.id.viewFlip);
+        int images[]={R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4,R.drawable.img5,R.drawable.img6};
+
+        for(int i=0;i<images.length;i++)
+        {
+            flipperImage(images[i]);
+        }
 
         botBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
         Disease=i.getStringExtra("Dis");
 
         if(Disease!=null) {
-            if (Disease.trim().equals("Heart") || Disease.trim().equals("heart")) {
+            if (Disease.trim().equalsIgnoreCase("Heart")) {
                 val = 1;
                 //    Toast.makeText(this, "value", Toast.LENGTH_SHORT).show();
             } else if (Disease.trim().equals("Depression") || Disease.trim().equals("depression"))
@@ -162,6 +172,17 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
         });
     }
 
+    public  void flipperImage(int image){
+        ImageView imageView= new ImageView(this);
+        imageView.setBackgroundResource(image);
+
+        viewFlipper.addView(imageView);
+        viewFlipper.setFlipInterval(4000);
+        viewFlipper.setAutoStart(true);
+
+        viewFlipper.setInAnimation(this,android.R.anim.slide_in_left);
+        viewFlipper.setOutAnimation(this,android.R.anim.slide_out_right);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
