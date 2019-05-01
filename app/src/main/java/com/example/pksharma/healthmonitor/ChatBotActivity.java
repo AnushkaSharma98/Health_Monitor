@@ -98,8 +98,9 @@ public class ChatBotActivity extends AppCompatActivity{
 
             @Override
             public void onClick(View view) {
-
+                typingEditText.setHint("Enter your message...");
                 myMessage = typingEditText.getText().toString();
+                typingEditText.setText("");
                 Log.i("msg","r"+ myMessage);
                 messages.add(myMessage);
                 SentMessage sentMessage = new SentMessage(myMessage);
@@ -142,8 +143,8 @@ public class ChatBotActivity extends AppCompatActivity{
                                 }
 
                             }else{
-                                messages.add("Smjh ni aya");
-                                ReceivedMessage receivedMessage2 = new ReceivedMessage("Smjh ni aya");
+                                messages.add("Unable to understand");
+                                ReceivedMessage receivedMessage2 = new ReceivedMessage("Sorry! Unable to understand");
                                 itemList.add(receivedMessage2);
 //                                botMessages.add("Smjh ni aya");
                                 adapter.notifyDataSetChanged();
@@ -233,12 +234,12 @@ public class ChatBotActivity extends AppCompatActivity{
                         StringBuilder options = new StringBuilder();
                         for(int i=0;i<items.size();i++){
                             if(items.size()==1){
-                                options.append("1. Yes");
+                                options.append("1) Yes");
                                 options.append("\n");
-                                options.append("2. No");
+                                options.append("2) No");
                                 break;
                             }else{
-                                options.append((i+1) + items.get(i).name);
+                                options.append((i+1) + ") " + items.get(i).name);
                                 options.append("\n");
                             }
                         }
@@ -272,7 +273,7 @@ public class ChatBotActivity extends AppCompatActivity{
                 commonNameDisease="cold";
             if(nameDisease.trim().equals("Chest pain"))
                 commonNameDisease="heart";
-            if(nameDisease.trim().equals("Asthma attack"))
+            if(nameDisease.trim().equals("Asthma attack") || nameDisease.trim().equals("Asthma") )
                 commonNameDisease="asthma";
             if(nameDisease.trim().equals("Depressive disorder"))
                 commonNameDisease="depression";

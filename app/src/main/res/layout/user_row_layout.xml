@@ -10,8 +10,8 @@
         android:textSize="20dp"
         android:padding="10dp"
         android:layout_margin="10dp"
-        android:background="#3aa8c1"
-        android:textColor="@android:color/black"
+        android:background="#36b9a5"
+        android:textColor="@android:color/white"
         android:layout_width="150dp"
         android:layout_height="wrap_content"/>
 
