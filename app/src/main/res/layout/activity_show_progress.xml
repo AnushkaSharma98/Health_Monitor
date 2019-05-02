@@ -2,6 +2,8 @@
 
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/scroll"
+
     android:layout_height="match_parent"
     android:fillViewport="true">
 
@@ -25,7 +27,6 @@
         android:background="#3589b4"
         android:textColor="@android:color/white"
         android:id="@+id/btn1"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -36,7 +37,7 @@
 
     <EditText
         android:id="@+id/et1"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -48,7 +49,7 @@
 
     <EditText
         android:id="@+id/et2"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -62,7 +63,7 @@
     <EditText
         android:visibility="invisible"
         android:id="@+id/et3"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -72,12 +73,14 @@
 
     <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
         android:layout_height="200dip"
         android:layout_marginTop="20dp"
         android:visibility="invisible"
         android:id="@+id/graph1" />
     <TextView
         android:id="@+id/text3"
+
         android:textSize="20sp"
         android:textAlignment="center"
         android:visibility="invisible"
@@ -86,6 +89,7 @@
 
     <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
         android:layout_height="200dip"
         android:layout_marginTop="20dp"
         android:visibility="invisible"
@@ -102,6 +106,7 @@
 
     <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
         android:layout_height="200dip"
         android:layout_marginTop="20dp"
         android:visibility="invisible"

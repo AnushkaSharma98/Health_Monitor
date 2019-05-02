@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,8 @@ public class showProgress extends AppCompatActivity {
     EditText et1,et2,et3;
     Button button;
     String Disease="";
-    int y1,y2,y3,extra,val;
+    ScrollView scrollView;
+    double y1,y2,y3,extra,val;
     LinearLayout linearLayout;
     GraphView graphView1,graphView2,graphView3;
     Disease d;
@@ -63,10 +65,12 @@ public class showProgress extends AppCompatActivity {
         linearLayout=findViewById(R.id.linear);
         graphView1=findViewById(R.id.graph1);
         graphView2=findViewById(R.id.graph2);
+        scrollView=findViewById(R.id.scroll);
         graphView3=findViewById(R.id.graph3);
         et1=findViewById(R.id.et1);
         et2=findViewById(R.id.et2);
         et3=findViewById(R.id.et3);
+
 
 
 
@@ -161,15 +165,23 @@ public class showProgress extends AppCompatActivity {
        }else if(val==6){
 
 
-           textView1.setText("Cancer 1");
-           textView2.setText("Cancer 2");
+           textView1.setText("Tumor size");
+           textView2.setText("White Blood Cell Count");
 
-           textView3.setText("Cancer 1");
-           textView4.setText("Cancer 2");
+           textView3.setText("Tumor size");
+           textView4.setText("White Blood Cell Count");
 
 
 
-       }else{
+       }else if(val==7){
+           textView1.setText("Creatinine Level");
+           textView2.setText("Urea Level");
+
+           textView3.setText("Creatinine Level");
+           textView4.setText("Urea Level");
+
+       }
+       else{
 
            textView1.setText("Heart Rate  ");
            textView2.setText("Blood Pressure ");
@@ -197,21 +209,21 @@ public class showProgress extends AppCompatActivity {
 
 
                 try{
-                    y1= Integer.parseInt(val1);
+                    y1= Double.parseDouble(val1);
                 }catch(NumberFormatException ex){ // handle your exception
                     Toast.makeText(showProgress.this, "val1 error", Toast.LENGTH_SHORT).show();
                 }
                 try{
-                    if(val!=2 && val!=4 && val!=5 && val!=6) {
-                        y2 = Integer.parseInt(arr[0]);
-                        y3=  Integer.parseInt(arr[1]);
+                    if(val!=2 && val!=4 && val!=5 && val!=6 && val!=7) {
+                        y2 = Double.parseDouble(arr[0]);
+                        y3=  Double.parseDouble(arr[1]);
                     }
                 }catch(NumberFormatException ex){ // handle your exception
                     Toast.makeText(showProgress.this, "val2 error", Toast.LENGTH_SHORT).show();
 
                 }
-                int g11=0,g12=0,g13=0,g14=0;
-                int g21=0,g22=0,g23=0,g24=0;
+                double g11=0,g12=0,g13=0,g14=0;
+                double g21=0,g22=0,g23=0,g24=0;
                 if(val==1)
                 {
                     g21=120;
@@ -234,7 +246,7 @@ public class showProgress extends AppCompatActivity {
                     if(y1<60)
                         Toast.makeText(showProgress.this, "ALERT! Low Heart Rate", Toast.LENGTH_SHORT).show();
 
-                }else if(val==2 || val==4 || val==5 ||val==6)
+                }else if(val==2 || val==4 || val==5)
                 {
                     g11=1;
                     g12=1;
@@ -245,7 +257,7 @@ public class showProgress extends AppCompatActivity {
                     g23=1;
                     g24=2;
                     
-                }else if(val==3){
+                } else if(val==3){
                     g21=120;
                     g22=122;
                     g23=130;
@@ -267,7 +279,29 @@ public class showProgress extends AppCompatActivity {
                         Toast.makeText(showProgress.this, "ALERT! Low Insulin Level", Toast.LENGTH_SHORT).show();
 
 
-                }else{
+                }else if(val==6){
+
+                    g11=1.6;
+                    g12=1.4;
+                    g13=1.1;
+                    g14=0.9;
+                    g21=11500;
+                    g22=11300;
+                    g23=10900;
+                    g24=11000;
+
+                }else if(val==7)
+                {
+                    g11=0.6;
+                    g12=0.53;
+                    g13=0.42;
+                    g14=0.38;
+                    g21=20;
+                    g22=18;
+                    g23=19;
+                    g24=18;
+                }
+                else{
                     g21=120;
                     g22=122;
                     g23=130;
@@ -321,10 +355,11 @@ public class showProgress extends AppCompatActivity {
                 graphView2.addSeries(serie);
 
         if(extra>0) {
+
             textView5.setVisibility(View.VISIBLE);
             int g31=0,g32=0,g33=0,g34=0;
 
-            if(val!=2 && val!=4 && val!=5 && val!=6)
+            if(val!=2 && val!=4 && val!=5 && val!=6 && val!=7)
             {
                 g31=70;
                 g32=60;
@@ -341,7 +376,7 @@ public class showProgress extends AppCompatActivity {
 
 
                 try {
-                    y3 = Integer.parseInt(val3);
+                    y3 = Double.parseDouble(val3);
                 } catch (NumberFormatException ex) { // handle your exception
                     Toast.makeText(showProgress.this, "val3 error", Toast.LENGTH_SHORT).show();
 

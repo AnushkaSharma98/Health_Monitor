@@ -109,6 +109,8 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
                 val=5;
             else if(Disease.trim().equals("Cancer") || Disease.trim().equals("cancer"))
                 val=6;
+            else if(Disease.trim().equals("Kidney") || Disease.trim().equals("kidney"))
+                val=7;
             else
                 val = 0;
         }
@@ -127,20 +129,22 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
                     //    Toast.makeText(this, "value", Toast.LENGTH_SHORT).show();
                 }else if(Disease.trim().equals("Depression") || Disease.trim().equals("depression"))
                     val=2;
-                else if(Disease.trim().equals("Diabities") || Disease.trim().equals("diabetes"))
+                else if(Disease.trim().equals("Diabetes") || Disease.trim().equals("diabetes"))
                     val=3;
-                else if(Disease.trim().equals("Asthama") || Disease.trim().equals("asthama"))
+                else if(Disease.trim().equals("Asthma") || Disease.trim().equals("asthma"))
                     val=4;
                 else if (Disease.trim().equals("Cold") || Disease.trim().equals("cold"))
                     val=5;
                 else if(Disease.trim().equals("Cancer") || Disease.trim().equals("cancer"))
                     val=6;
+                else if (Disease.trim().equalsIgnoreCase("Kidney"))
+                    val =7;
                 else
                     val=0;
 
 
                 if(Disease!=null)
-                    textView.setText("Detected Disease: "+Disease);
+                    textView.setText("Disease: "+Disease);
 
                 Toast.makeText(MainActivity.this, "value: "+val, Toast.LENGTH_SHORT).show();
                // Toast.makeText(MainActivity.this, "Disease:"+Disease, Toast.LENGTH_SHORT).show();
