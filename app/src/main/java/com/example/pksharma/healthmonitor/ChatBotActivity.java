@@ -167,9 +167,12 @@ public class ChatBotActivity extends AppCompatActivity{
                         }
                         if(items.size()==1){
                             if(Integer.parseInt(myMessage)==1){
+                                mention.id = items.get(0).id;
                                 mention.choiceId = "present";
                             }else if(Integer.parseInt(myMessage)==2){
+                                mention.id = items.get(0).id;
                                 mention.choiceId = "absent";
+
                             }
                         }else{
                             mention.choiceId = "present";
@@ -269,16 +272,14 @@ public class ChatBotActivity extends AppCompatActivity{
             itemList.add(receivedMessage);
 //            botMessages.add(commonNameDisease + " " + nameDisease + " " + probabilityDisease);
 
-            if(nameDisease.trim().equals("Common cold"))
+            if(commonNameDisease.trim().equals("Common cold"))
                 commonNameDisease="cold";
-            if(nameDisease.trim().equals("Chest pain"))
+            if(commonNameDisease.trim().equals("Chest pain"))
                 commonNameDisease="heart";
-            if(nameDisease.trim().equals("Asthma attack") || nameDisease.trim().equals("Asthma") )
+            if(commonNameDisease.trim().equals("Asthma attack") || commonNameDisease.trim().equals("Asthma") )
                 commonNameDisease="asthma";
-            if(nameDisease.trim().equals("Depressive disorder"))
+            if(commonNameDisease.trim().equals("Depressive disorder"))
                 commonNameDisease="depression";
-
-
             Intent intent=new Intent(ChatBotActivity.this,MainActivity.class);
             intent.putExtra("Dis",commonNameDisease);
             startActivity(intent);
