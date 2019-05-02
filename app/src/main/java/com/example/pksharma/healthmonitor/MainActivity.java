@@ -1,5 +1,6 @@
 package com.example.pksharma.healthmonitor;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ import android.widget.ViewFlipper;
 
 public class MainActivity extends AppCompatActivity implements AccelerometerListener {
 
-    Button enterBtn,botBtn;
+    Button enterBtn,botBtn,mapBtn;
     LinearLayout linearLayout;
     String Disease="";
     TextView textView;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
         botBtn=findViewById(R.id.botBtn);
         enterBtn=findViewById(R.id.enterBtn);
         textView=findViewById(R.id.tvDis);
+        mapBtn=findViewById(R.id.mapBtn);
         viewFlipper=findViewById(R.id.viewFlip);
         int images[]={R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4,R.drawable.img5,R.drawable.img6};
 
@@ -57,6 +59,16 @@ public class MainActivity extends AppCompatActivity implements AccelerometerList
             }
         });
 
+
+        mapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_WEB_SEARCH);
+                intent.putExtra(SearchManager.QUERY,"https://www.google.com/maps/search/hospitals+near+me");
+                startActivity(intent);
+            }
+        });
        final Button b=new Button(MainActivity.this);
         final EditText editText=new EditText(MainActivity.this);
 

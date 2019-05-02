@@ -20,7 +20,7 @@
     <TextView
         android:id="@+id/tvDis"
         android:layout_marginTop="20dp"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Button
@@ -30,7 +30,7 @@
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
         android:layout_width="300dp"
-        android:layout_height="100dp" />
+        android:layout_height="70dp" />
     <Button
         android:id="@+id/enterBtn"
         android:text="Enter Disease"
@@ -38,8 +38,15 @@
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:layout_width="300dp"
-        android:layout_height="100dp" />
-
+        android:layout_height="70dp" />
+    <Button
+        android:id="@+id/mapBtn"
+        android:text="Near by Hospitals"
+        android:backgroundTint="#add827"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="70dp" />
 
 
 </LinearLayout>
